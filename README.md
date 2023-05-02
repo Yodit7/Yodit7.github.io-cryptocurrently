@@ -1,4 +1,4 @@
-:globe_with_meridians: # Yodit7.github.io/cryptocurrently/
+# Yodit7.github.io/cryptocurrently/
 
 This webiste displays a comprehensive list of the top cryptocurrencies in the market, along with their current prices, market capitalization, and 24-hour trading volume. This information is updated in real-time, ensuring that you alwyas have the latest data. Used the CoinDesk API, CryptoCompare API and CoinGecko APIfor fetching the real-time data.
 
