@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoCurrently</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600&family=Poppins&family=Titillium+Web:wght@100;300;600&display=swap" rel="stylesheet">
+    
+    <!-- icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+</head>
+<body>
+    
+    <!-- header / nav -->
+    <header>
+        <div class="logo">
+            <h2><a href="#">Crypto.Currently</a></h2>
+        </div>
+        <!-- <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false"></span></button> -->
+        
+        <nav class="nav-list-bs">
+            <ul class="nav-list">
+                <!-- <li class="nav-item"><a href="#about">About</a></li> -->
+                <li class="nav-item"><a href="#market">Market</a></li>
+                <li class="nav-item"><a href="#news">News</a></li>
+                <li class="nav-item"><a href="#crypto_abc">Crypto-ABC</a></li>
+            </ul>
+        </nav>
+
+        <div class="dropdown_menu">
+            <div class="links_wrapper">
+                <!-- <a href="#about">About</a> -->
+                <a href="#market">Market</a>
+                <a href="#news">News</a>
+                <a href="#crypto_abc">Crypto-ABC</a>
+            </div>
+        </div>
+        
+        <button type="button" class="btn-nav"><a href="#"><i class="bi bi-list"></i></a></button>
+
+    </header>
+
+    <main>
+    <!-- landing page -->
+    <section>
+        <div class="landing_page">
+            <div class="landing_page_header">
+                <div class="scroll_header">
+                <div class="landing_page_header_overview">
+                    <ul class="overview-list">
+                        <li class="overview-item">Cryptos: <a href="#">23.623</a></li>
+                        <li class="overview-item">Exchanges: <a href="#">619</a></li>
+                        <li class="overview-item">Market Cap: <a href="#" id="market_cap"></a></li>
+                        <li class="overview-item">24h Vol: <a href="#" id="total_volume"></a></li>
+                        <li class="overview-item">Dominance: <a href="#">BTC: 46.0% ETH: 19.0%</a></li>
+                        <li class="overview-item">ETH Gas: <a href="#">32 Gwei</a></li>
+                    </ul>
+                </div>
+                </div>
+    
+                <div class="landing_page_header_infos">
+                    <p class="p-title">Today's Cryptocurrency Prices by Market Cap</p>
+                    <p class="descr">The global crypto market cap is <b id="market_cap_info"></b>, a <span style="color: red"; id="marketCap_perc_change"><i class="bi bi-caret-down-fill" style="font-size: 10px;"></i> </span> decrease over the last day. 
+                        <a href="#"> Read More</a>
+                    </p>
+                    
+                </div>
+    
+                <div class="landing_page_filter">
+                    <div class="landing_page_filter_left">
+                        <button><i class="bi bi-star-fill" style="padding-right: 2px; color: grey;"></i>
+                            Watchlist</button>
+                        <button><i class="bi bi-pie-chart-fill" style="padding-right: 2px; color: grey;"></i>
+                            Portfolio</button>
+                    </div>
+                    <div class="landing_page_filter_right" style="padding-right: 2px; color: grey;">
+                        <button>
+                            <i class="bi bi-sliders" style="padding-right: 2px; color: grey;"></i>
+                            Filters</button>
+                        <button><i class="bi bi-table" style="padding-right: 2px; color: grey;"></i>
+                            Customize</button>
+                        <button class="btn-gap">
+                            <i class="bi bi-list" style="color: black;"></i>
+                            <i class="bi bi-grid-fill" style="padding-right: 2px; color: black;"></i>
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- market overview -->
+    <section id="market">
+        <div class="market_overview">
+            <div class="scroll">
+            <table class="market_overview_table">
+                <thead class="market_overview_head">
+                    <tr>
+                        <th id="table_name">Name</th>
+                        <th>Price</th>
+                        <th>1h %</th>
+                        <th>24h %</th>
+                        <th>Market Cap</th>
+                        <th id="circ_supply">Circulating Supply</th>
+                    </tr>
+                </thead>
+                <tbody id="coin_list">
+                </tbody>
+            </table>
+            </div>
+            <div class="slider">
+                <button class="btn-to-left" id="prev-btn"><i class="bi bi-chevron-left"></i></button>
+                <button class="page-btn active" value="1" onclick="activeLink()">1</button>
+                <button class="page-btn" value="2" onclick="activeLink()">2</button>
+                <button class="page-btn" value="3" onclick="activeLink()">3</button>
+                <button class="page-btn" onclick="activeLink()">...</button>
+                <button class="page-btn" onclick="activeLink()">Last</button>
+                <button class="btn-to-right" id="next-btn"><i class="bi bi-chevron-right"></i></button>
+            </div>
+
+            <div class="slider_info">
+                <p>Showing 1 - 100 out of <span id="numOfCoins"></span></p>
+                <p>Show rows <button>100 <i class="bi bi-chevron-down"></i></button></p>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- news -->
+    <section id="news">
+        <div class="news">
+            <hr>
+            <h2 class="news_header">Latest News</h2>
+    
+             <div class="news_section">
+                <div class="news_article">
+                    <h6 id="news_article_first">Article Title</h6>
+                    <p class="news_section_one" id="news_article_content_first">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            deserunt molestiae at quaerat eaque animi ut repellat optio quod, aliquid ratione aliquam 
+                            exercitationem ex culpa quisquam corrupti in dolorum magni.</p>
+                    <a href="" id="news_article_link_first" style="font-size: 14px;">Link</a>
+                </div>
+                <div class="news_article">
+                    <h6 id="news_article_snd">Article Title</h6>
+                    <p class="newscon_section_one" id="news_article_content_snd">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            deserunt molestiae at quaerat eaque animi ut repellat optio quod, aliquid ratione aliquam 
+                            exercitationem ex culpa quisquam corrupti in dolorum magni.</p>
+                    <a href="" id="news_article_link_snd" style="font-size: 14px;">Link</a>
+                </div>
+                <div class="news_article">
+                    <h6 id="news_article_third">Article Title</h6>
+                    <p class="news_section_one" id="news_article_content_third">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            deserunt molestiae at quaerat eaque animi ut repellat optio quod, aliquid ratione aliquam 
+                            exercitationem ex culpa quisquam corrupti in dolorum magni.</p>
+                    <a href="" id="news_article_link_third" style="font-size: 14px;">Link</a>
+                </div>
+            </div>   
+    
+            <!-- <div class="btn_dots">
+                <button><i class="bi bi-dot"></i></button>
+                <button><i class="bi bi-dot"></i></button>
+                <button><i class="bi bi-dot"></i></button>
+            </div> -->
+            <hr>
+        </div>
+
+    </section>
+
+    <!-- crypto-abc-->
+    <section class="crypto_abc_section" id="crypto_abc">
+        <div class="crypto_abc">
+            <h2 class="crypto_abc_title">Crypto-ABC</h2>
+            <div class="abc_letters">
+                <button class="abc-btn" id="btn_letters_a_d">A - D </button> 
+                <button class="abc-btn" id="btn_letters_e_h">E - H </button> 
+                <button class="abc-btn" id="btn_letters_i_l">I - L </button> 
+                <button class="abc-btn" id="btn_letters_m_p">M - P </button> 
+                <button class="abc-btn" id="btn_letters_q_t">Q - T </button> 
+                <button class="abc-btn" id="btn_letters_u_w">U - W </button> 
+                <button class="abc-btn" id="btn_letters_x_z">X - Z </button> 
+            </div>
+            
+            <div class="crypto_abc_desc">
+                
+                <div class="letters_a_d">
+                    <!-- A -->
+                    <div class="letter_desc">
+                        <p class="letter">A</p>
+                        <div class="word">
+                            <p class="keyword">Altcoin</p>
+                            <p>Altcoin, or alternative coin, refers to any type of 
+                                cryptocurrency other than Bitcoin. There are currently over 17,000 different 
+                                types of cryptocurrencies. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- B -->
+                    <div class="letter_desc">
+                        <p class="letter">B</p>
+                        <div class="word">
+                            <p class="keyword">Blockchain</p>
+                            <p>A blockchain is a distributed database that is shared among the nodes of a computer 
+                                network. As a database, a blockchain stores information electronically in digital format. 
+                                Blockchain gets its name because the system is built from blocks of data that are chained 
+                                together in chronological order so that all transactions are visible to everyone on the 
+                                network. The way the system is constructed means that the records are theoretically 
+                                unchangeable. A blockchain runs on a decentralized network of computers, called nodes, 
+                                which allows for peer-to-peer confirmation that drives faster, more secure transactions. 
+                                The speed, security, and transparency of blockchain have allowed for the growth of
+                                cryptocurrencies worldwide. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Block</p>
+                            <p>Altcoin, or alternative coin, refers to any type of 
+                                cryptocurrency other than Bitcoin. There are currently over 17,000 different 
+                                types of cryptocurrencies. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Bitcoin Cash</p>
+                            <p>A peer-to-peer electronic cash system that formed from a fork of the original Bitcoin. 
+                                Where Bitcoin is widely accepted as too volatile to be useful as a currency, Bitcoin Cash 
+                                is designed to be better optimized for transactions. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- C -->
+                    <div class="letter_desc">
+                        <p class="letter">C</p>
+                        <div class="word">
+                            <p class="keyword">Cryptocurrency</p>
+                            <p>Cryptocurrency, often referred to simply as crypto, is known as any form of currency that exists either digitally or virtually and uses cryptography to ensure secure transactions. Unlike traditional currencies that have a central issuing or regulating authority (like the government or a bank/credit union), cryptocurrencies circulate without a central monetary authority. Instead, crypto uses a decentralized system to record transactions and issue new units. 
+    
+                                Crypto is digital, meaning that is it only generated and traded in a digital or virtual format. Additionally, because it is a digital currency, the value of most cryptocurrencies is not pegged to a fiat currency like the United States Dollar or Japanese Yen, nor is it determined by precious metals like gold or platinum.   
+                                
+                                Cryptocurrencies can be mined or purchased from cryptocurrency exchanges. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Cryptography</p>
+                            <p>Cryptography is the study and practice of sending secure, encrypted messages between two or more parties. It allows digital currency transactions to be pseudonymous and ensures that each unit of cryptocurrency is secure and can’t be copied. It also protects from double-spending. If you are interested in investing and trading in cryptocurrency, you can rest assured that your transactions are safe and secure. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- D -->
+                    <div class="letter_desc">
+                        <p class="letter">D</p>
+                        <div class="word">
+                            <p class="keyword">Decentralized Crypto Exchanges (DEXs)
+                            </p>
+                            <p>Blockchain-based apps that coordinate large-scale trading of crypto assets between many assets. They do that entirely through automated algorithms, instead of the conventional approach of acting as a financial intermediary between buyers and sellers. The idea behind a DEX is “disintermediation,” which means removing middlemen to allow regular people to do business directly with each other. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Double-Spending
+                            </p>
+                            <p>The risk that cryptocurrency can be used twice or more. Double-spending occurs when someone alters a blockchain and inserts a special one that allows them to acquire a cryptocurrency. Although double-spending can happen, it is more likely that a cryptocurrency is stolen from a wallet that wasn't adequately protected or secured. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="letters_e_h letters_hidden">
+                    <!-- E -->
+                    <div class="letter_desc">
+                        <p class="letter">E</p>
+                        <div class="word">
+                            <p class="keyword">Exchange</p>
+                            <p>An exchange is a digital marketplace where you can buy and sell different types of cryptocurrencies and tokens. These coins can then be deposited back into a wallet, which supports the coin. Sometimes it’s also possible to convert it to dollars. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Ethereum</p>
+                            <p>Ethereum is the second-largest cryptocurrency by trade volume and market cap. It is a blockchain network and software platform that developers can use to build apps and other cryptocurrencies. The associated currency for Ethereum is called Ether, and the cost of one token is roughly $4,000. If you don’t want to purchase a whole Ethereum token or don’t have enough money in your account for a full coin, you can purchase a fraction of one. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- F -->
+                    <div class="letter_desc">
+                        <p class="letter">F</p>
+                        <div class="word">
+                            <p class="keyword">Fiat Currency
+                            </p>
+                            <p>Fiat currency, also referred to simply as fiat, is money issued by a government or organization that is allowed to issue it. Fiat is backed up by its economy and has an institution that regulates it (a central bank). Examples of fiat currencies include the Great British Pound (GBP), the United States Dollar (USD), and the Japanese Yen (JPY).
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Fork</p>
+                            <p>A fork occurs when a blockchain’s users make changes to its rules. These changes to the protocol of a blockchain often result in two new paths – one that follows the old rules, and a new blockchain that splits off from the previous one. For example, a fork of Bitcoin resulted in Bitcoin Cash. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- G -->
+                    <div class="letter_desc">
+                        <p class="letter">G</p>
+                        <div class="word">
+                            <p class="keyword">Gas</p>
+                            <p>A fee that developers must pay to the Ethereum network to use the system. Gas is paid in Ether, the native cryptocurrency of Ethereum. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Genesis Block
+                            </p>
+                            <p>The first block of a cryptocurrency ever mined.
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- H -->
+                    <div class="letter_desc">
+                        <p class="letter">H</p>
+                        <div class="word">
+                            <p class="keyword">Halving</p>
+                            <p>A feature that was written into Bitcoin’s code in that after a certain number of blocks are mined (typically every four years) the amount of new Bitcoin entering circulation gets halved. The halving can have an impact on Bitcoin’s price. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Hot Wallet
+                            </p>
+                            <p>A software-based cryptocurrency wallet connected to the Internet. While more convenient for quickly accessing your crypto, these wallets are a bit more susceptible to hacking and cybersecurity attacks than offline wallets, or cold wallets – just as files you store in the cloud may be more easily hacked than those locked safely in your home. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="letters_i_l letters_hidden">
+                    <!-- I -->
+                    <div class="letter_desc">
+                        <p class="letter">I</p>
+                        <div class="word">
+                            <p class="keyword">Initial Coin Offering (ICO)
+                            </p>
+                            <p>Similar to an Initial Public Offering (IPO) of stock, an Initial Coin Offering is a way that funds are raised for a new cryptocurrency project. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- J -->
+                    <div class="letter_desc">
+                        <p class="letter">J</p>
+                        <div class="word">
+                            <p class="keyword">Joy of Missing Out (JOMO)
+                            </p>
+                            <p>This term refers to a trader who is happy that they did not take a certain position. This phrase is often said after a considerable price drop. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- K -->
+                    <div class="letter_desc">
+                        <p class="letter">K</p>
+                        <div class="word">
+                            <p class="keyword">Know Your Customer (KYC)
+                            </p>
+                            <p>This phrase was created to combat money laundering via cryptocurrencies. At almost every ICO it is mandatory to prove that you are who you say you are. This is also regularly requested at crypto exchanges. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- L -->
+                    <div class="letter_desc">
+                        <p class="letter">L</p>
+                        <div class="word">
+                            <p class="keyword">Ledger</p>
+                            <p>A record of financial transactions. A ledger cannot be changed, it can only be appended with new transactions. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="letter_m_p letters_hidden">
+                    <!-- M -->
+                    <div class="letter_desc">
+                        <p class="letter">M</p>
+                        <div class="word">
+                            <p class="keyword">Mining</p>
+                            <p>The process whereby new cryptocurrency coins are made available and the log of transactions between users is maintained.  
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- N -->
+                    <div class="letter_desc">
+                        <p class="letter">N</p>
+                        <div class="word">
+                            <p class="keyword">Node</p>
+                            <p>A computer that connects to a blockchain network.
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Non-Fungible Tokens (NFTs)
+                            </p>
+                            <p>Units of value used to represent the ownership of unique digital items like art or collectibles. NFTs are most often held on the Ethereum blockchain. s
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- O -->
+                    <div class="letter_desc">
+                        <p class="letter">O</p>
+                        <div class="word">
+                            <p class="keyword">On-Chain Governance
+                            </p>
+                            <p>A system in blockchain technology where token holders vote and make decisions on proposed changes or upgrades to improve the network’s performance without compromising its security. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- P -->
+                    <div class="letter_desc">
+                        <p class="letter">P</p>
+                        <div class="word">
+                            <p class="keyword">Peer-to-Peer
+                            </p>
+                            <p>A system where two parties can conduct financial transactions with each other without involving a third party, like a bank. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="letters_q_t letters_hidden">
+                    <!-- Q -->
+                    <div class="letter_desc">
+                        <p class="letter">Q</p>
+                        <div class="word">
+                            <p class="keyword">Quantum-Proof
+                            </p>
+                            <p>A blockchain that is resistant to attacks from quantum computers. Quantum computers are still not fully functional, but they’ve reached a stage where it’s believed they can be implemented in the future. This implementation would make current encryption methods vulnerable against quantum computers because of their ability to break through cryptography codes much faster than traditional computing. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- R -->
+                    <div class="letter_desc">
+                        <p class="letter">R</p>
+                        <div class="word">
+                            <p class="keyword">Ripple</p>
+                            <p>Ripple is the company behind the cryptocurrency XRP, and it’s a payment settlement system and currency exchange network that can process transactions globally. Ripple can facilitate exchanges for a variety of fiat currencies or cryptocurrencies. 
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- S -->
+                    <div class="letter_desc">
+                        <p class="letter">S</p>
+                        <div class="word">
+                            <p class="keyword">Satoshi Nakamoto
+                            </p>
+                            <p>The pseudonymous creator of Bitcoin. No one knows the true identity of Nakamoto – or if it’s more than one person.
+                            </p>
+                        </div>
+                    </div>
+    
+                    <!-- T -->
+                    <div class="letter_desc">
+                        <p class="letter">T</p>
+                        <div class="word">
+                            <p class="keyword">Token</p>
+                            <p>A unit of value on a blockchain that usually has some other value proposition besides just a transfer value (like a coin). Tokens can represent any asset, from commodities like gold or coffee beans, to loyalty points, real estate, or even other cryptocurrencies.
+                            </p>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="letters_u_w letters_hidden">
+                    <!-- U -->
+                    <div class="letter_desc">
+                        <p class="letter">U</p>
+                        <div class="word">
+                            <p class="keyword">Unconfirmed Transaction
+                            </p>
+                            <p>When a transaction is proposed, it is unconfirmed until the network has examined the blockchain to ensure that there are no other transactions pending involving the same coin. In the unconfirmed state, the transaction has not been appended to the blockchain. 
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- V -->
+                    <div class="letter_desc">
+                        <p class="letter">V</p>
+                        <div class="word">
+                            <p class="keyword">Volatile Market
+                            </p>
+                            <p>A market where prices are fluctuating rapidly so it’s harder to predict what will happen next. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Vitalik Buterin
+                            </p>
+                            <p>Programmer who invented Ethereum in 2015.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- W -->
+                    <div class="letter_desc">
+                        <p class="letter">W</p>
+                        <div class="word">
+                            <p class="keyword">Wallet</p>
+                            <p>A digital location used to store crypto funds by storing private and public keys that provide access to your cryptocurrency holdings. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="letters_x_z letters_hidden">
+                    <!-- X -->
+                    <div class="letter_desc">
+                        <p class="letter">X</p>
+                        <div class="word">
+                            <p class="keyword">XRP</p>
+                            <p>This is the cryptocurrency of the Ripple digital payment network. The XRP ledger is a decentralized, public blockchain built for digital payments. XRP touts itself as a faster, more efficient way to power global payments. These tokens are much cheaper to purchase, at $0.62 per coin. Ripple crashed at the end of 2020 due to actions filed against the company by the SEC, causing the price to tank. It is predicted that the price will rise to roughly $1 by the end of 2022. 
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Y -->
+                    <div class="letter_desc">
+                        <p class="letter">Y</p>
+                        <div class="word">
+                            <p class="keyword">Yield Farming
+                            </p>
+                            <p>The process of generating the most returns possible on your crypto assets by putting them to work.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Z -->
+                    <div class="letter_desc">
+                        <p class="letter">Z</p>
+                        <div class="word">
+                            <p class="keyword">Zero-Knowledge Proof
+                            </p>
+                            <p>Zero-knowledge proofs enable the posting of private transactions to the blockchain while maintaining privacy by offering a way to confirm that the transaction was completed successfully without disclosing the private information utilized in the transaction. 
+                            </p>
+                        </div>
+                        <div class="word">
+                            <p class="keyword">Zero-Confirmation Transaction
+                            </p>
+                            <p>Alternative phrasing for an unconfirmed transaction. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <p class="footer_info">Made by Yodit - 2023</p>
+    </footer>
+    </main>
+
+    <script src="main.js" defer></script>
+</body>
+</html>
